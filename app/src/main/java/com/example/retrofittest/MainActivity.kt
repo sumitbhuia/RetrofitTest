@@ -1,13 +1,11 @@
 package com.example.retrofittest
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.liveData
 import retrofit2.Response
-import retrofit2.create
 
 /*
         To use retrofit
@@ -49,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
 
 */
-        responseLiveData.observe(this, Observer {
+        responseLiveData.observe(this) {
 
 /*
             - Inside the lambda, it refers to the latest value emitted by responseLiveData.
@@ -61,8 +59,8 @@ class MainActivity : AppCompatActivity() {
 
 
             //This line checks if the albumsList iterator is not null (i.e., the response body was valid and contained a list).
-            if (albumsList !=null){
-                while (albumsList.hasNext()){
+            if (albumsList != null) {
+                while (albumsList.hasNext()) {
                     //Storing the iterator
                     val albumItem = albumsList.next()
                     //  Log.i("TAGY",albumItem.title)
@@ -76,7 +74,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
             }
-        })
+        }
 
     }
 }
