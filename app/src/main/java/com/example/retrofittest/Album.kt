@@ -1,6 +1,3 @@
 package com.example.retrofittest
 
-class Album:ArrayList<AlbumItem>() {
-
-
-}
+class Album:ArrayList<AlbumItem>()

@@ -9,6 +9,20 @@ import androidx.lifecycle.liveData
 import retrofit2.Response
 import retrofit2.create
 
+/*
+        To use retrofit
+        ----------------
+        1 - Make a POJO / Data class -> representing the JSON object
+        2 - Make a empty class that returns a Array -> representing JSON Array
+        3 - Make a Service interface -> that holds all fn for network transaction
+        4 - Make a retrofit instance -> using singleton pattern
+        5 - In Main Activity
+                - Building retrofit instance , providing it with , service interface
+                - Making live response array -> putting in livedata -> which calls a network transaction function from retrofit service instance
+                - Observing the live data
+
+
+ */
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         //Finding textView
         val textView : TextView = findViewById(R.id.textView)
 
-        //Instance of retrofit -> implementing service interface
+        //Instance of retrofit service -> implementing service interface
         val retrofitService = RetrofitInstance.getRetrofitInstance().create(AlbumService::class.java)
 
         val responseLiveData : LiveData<Response<Album>> = liveData {
@@ -62,12 +76,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
             }
-
         })
 
-
-
     }
-
-
 }
